@@ -1,0 +1,120 @@
+@font-face {
+  font-family: "junegul";
+  src: url("fonts/junegull.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  font-family: "junegul", serif;
+  color: #4F5C6A;
+}
+
+#logo{
+  float: left;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #9EB9D4;
+  min-height: 70px;
+  position:fixed;
+  width:100%;
+  left:0;
+  top:0;
+  right: 0;
+  z-index: 1000;
+}
+
+.edgebutton {
+  width: 15px;
+  height: 15px;
+  background: #eee;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.edgebutton:hover {
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.08);
+}
+
+.edgebutton-foreignobject body {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+}
+
+.customNodeBody {
+  width: 100px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 8px;
+}
+
+.customNode:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 5%;
+  height: 0px;
+  width: 0px;
+  transform: translate(-50%, 0);
+  background: #ffffff;
+  z-index: -1;
+  line-height: 1;
+
+  color: #fff;
+  font-size: 9px;
+}
+
+div.sourceHandle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  transform: none;
+  border: none;
+  opacity: 0;
+}
+
+div.targetHandle {
+  width: 100%;
+  height: 100%;
+  background: blue;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  transform: none;
+  border: none;
+  opacity: 0;
+}
+
+
+.react-flow__panel.react-flow__attribution.bottom.right{
+  display: none;
+}
+
+.hover-opacity:hover{
+  opacity: 0.8;
+}
+
