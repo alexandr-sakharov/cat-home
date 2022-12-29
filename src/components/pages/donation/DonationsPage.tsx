@@ -12,7 +12,7 @@ const DonationsPage: React.FC = () => {
             bordered
             dataSource={donationsQuery.data || []}
             renderItem={(item: any) => <List.Item>
-                <div style={{ display: 'flex', justifyContent: "space-between"}}>
+                <div style={{ display: 'flex', justifyContent: "space-between", width: '100%'}}>
                     <div>
                         {item?.user?.name}
                     </div>
