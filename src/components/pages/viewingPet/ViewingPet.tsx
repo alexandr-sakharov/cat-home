@@ -51,29 +51,44 @@ const ViewingPet = () => {
                 <p>Пол: {petQuery.data?.sex}</p>
                 <p>Вакцинации: {petQuery.data?.vaccinations}</p>
                 <p>Описание: {petQuery.data?.description}</p>
-                {bookingPetQuery.data?.[0]?.status === 'DENIED' && (
-                    <p>отклонен</p>
+                {bookingPetQuery.data?.[0] && (
+                    <p>
+                        Статус:
+                        {bookingPetQuery.data?.[0]?.status === 'DENIED' && (
+                            <p>отклонен</p>
+                        )}
+                        {bookingPetQuery.data?.[0]?.status === 'APPROVED' && (
+                            <p>принят</p>
+                        )}
+                        {bookingPetQuery.data?.[0]?.status === 'WAITING' && (
+                            <p>ожидание</p>
+                        )}
+                    </p>
                 )}
-                {bookingPetQuery.data?.[0]?.status === 'APPROVED' && (
-                    <p>принят</p>
-                )}
-                <Button
-                    onClick={() => mutations.setBookingPet.mutate(petQuery.data?.id)}
-                    disabled={bookingPetQuery.data?.[0]?.status === 'WAITING'}
-                >
-                    Бронировать
-                </Button>
-                <Button type="primary" onClick={showModal}>
-                   пожертвование
-                </Button>
+                <div>
+                    <Button
+                        onClick={() => mutations.setBookingPet.mutate(petQuery.data?.id)}
+                        disabled={bookingPetQuery.data?.[0]?.status === 'WAITING'}
+                    >
+                        Бронировать
+                    </Button>
+                </div>
+                <div>
+                    <Button type="primary" onClick={showModal}>
+                        пожертвование
+                    </Button>
+                </div>
                 <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                     <Input value={sum} onChange={(val) => setSum(+val.target.value)}/>
-                    <Button onClick={() => {
-                        mutations.addDonate.mutate({id: petQuery.data?.id, amount: sum})
-                        setSum(0)
-                    }}>
-                        Пожертвовать
-                    </Button>
+                    <div>
+                        <Button onClick={() => {
+                            mutations.addDonate.mutate({id: petQuery.data?.id, amount: sum})
+                            setSum(0)
+                            handleCancel()
+                        }}>
+                            Пожертвовать
+                        </Button>
+                    </div>
                 </Modal>
             </div>
         </div>
