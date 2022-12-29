@@ -5,6 +5,7 @@ import roleRepository from "@/repository/RoleRepository";
 
 enum QueryKey {
     catList = 'catList',
+    role = 'role',
 }
 
 const ViewingCatsPageQueries = (): any => {
@@ -15,7 +16,7 @@ const ViewingCatsPageQueries = (): any => {
         queryFn: async (): Promise<any> => await catRepository.getPetsList(),
     })
     const roleListQuery = useQuery({
-        queryKey: [QueryKey.catList],
+        queryKey: [QueryKey.role],
         queryFn: async (): Promise<any> => await roleRepository.getRoleList(),
     })
 
