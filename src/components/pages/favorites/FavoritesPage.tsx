@@ -112,7 +112,7 @@ const FavoritesPage: React.FC = () => {
                 </Form>
             </Modal>
             <Row gutter={[32, 32]}>
-                {favoritesQuery.data?.content.map((val: { id: React.Key | null | undefined; }) => (
+                {favoritesQuery.data?.map((val: { id: React.Key | null | undefined; }) => (
                     <Col key={val.id} span={8}>
                         <ViewingPetCard roleList={roleList} mutations={mutations} petData={val}/>
                     </Col>
