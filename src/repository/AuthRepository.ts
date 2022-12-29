@@ -2,8 +2,8 @@ import BaseRepository from "./BaseRepository";
 
 
 enum Routes {
-  login = '/login',
-  register = '/register',
+  login = 'login',
+  register = 'register',
 }
 
 const baseUrl = '/'
