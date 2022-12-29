@@ -28,6 +28,7 @@ const MainMenu: React.FC = () => {
           mode="horizontal"
           defaultSelectedKeys={['/']}
           defaultOpenKeys={['/']}
+          selectedKeys={[location.pathname]}
           items = {menuItems}
           style={{ minWidth: '400px', background: 'transparent'}}
     >

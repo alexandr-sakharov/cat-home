@@ -14,7 +14,7 @@ const FavoritesPage: React.FC = () => {
             renderItem={(item: any) => <List.Item>
                 <div style={{ display: 'flex', justifyContent: "space-between", width: '100%'}}>
                     <div>
-                        {item?.user?.name}
+                        {item?.name}
                     </div>
                 </div>
             </List.Item>}
