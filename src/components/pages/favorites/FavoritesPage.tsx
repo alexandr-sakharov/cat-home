@@ -114,7 +114,7 @@ const FavoritesPage: React.FC = () => {
             <Row gutter={[32, 32]}>
                 {favoritesQuery.data?.map((val: { id: React.Key | null | undefined; }) => (
                     <Col key={val.id} span={8}>
-                        <ViewingPetCard roleList={roleList} mutations={mutations} petData={val}/>
+                        <ViewingPetCard fav roleList={roleList} mutations={mutations} petData={val}/>
                     </Col>
                 ))}
             </Row>

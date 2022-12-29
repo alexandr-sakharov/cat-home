@@ -7,7 +7,7 @@ import {DeleteFilled, DeleteOutlined, EditOutlined, HeartFilled, LikeFilled} fro
 import LoginRequestBody from "@/types/LoginRequestBody";
 
 // @ts-ignore
-const ViewingPetCard = ({petData, mutations, roleList}) => {
+const ViewingPetCard = ({fav, petData, mutations, roleList}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
@@ -84,13 +84,15 @@ const ViewingPetCard = ({petData, mutations, roleList}) => {
                     <span style={{marginLeft: '10px'}}>Удалить</span>
                 </div>
             </>)}
-            <div>
-                <HeartFilled onClick={() => defaultData.isLiked
-                    ? mutations.deleteLikePet.mutate(defaultData.id)
-                    : mutations.likePet.mutate(defaultData.id)
-                }/>
-                <span style={{marginLeft: '10px'}}>{defaultData.likes}</span>
-            </div>
+            {fav && (
+                <div>
+                    <HeartFilled onClick={() => defaultData.isLiked
+                        ? mutations.deleteLikePet.mutate(defaultData.id)
+                        : mutations.likePet.mutate(defaultData.id)
+                    }/>
+                    <span style={{marginLeft: '10px'}}>{defaultData.likes}</span>
+                </div>
+            )}
             <Modal
                 title="Редактирование кота"
                 open={isModalOpen}
