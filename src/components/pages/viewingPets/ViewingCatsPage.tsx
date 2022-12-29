@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import {Button, Card, Col, Form, Input, Modal, Row, Slider} from 'antd';
-import ViewingPetFilters from "@/components/pages/viewingPets/viewingPetFilters/ViewingPetFilters";
+import {Button, Col, Form, Input, Modal, Row} from 'antd';
 import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/ViewingPetCard";
 import ViewingCatsPageQueries from "@/components/pages/viewingPets/ViewingPetsQuery";
 import LoginRequestBody from "@/types/LoginRequestBody";
-import authRepository from "@/repository/AuthRepository";
 import catRepository from "@/repository/CatRepository";
 
 const ViewingCatsPage: React.FC = () => {
@@ -105,7 +103,7 @@ const ViewingCatsPage: React.FC = () => {
                 </Form>
             </Modal>
             <Row gutter={[32, 32]}>
-                {(catListQuery.data || [{id: 2}])?.map((val: { id: React.Key | null | undefined; }) => (
+                {catListQuery.data?.map((val: { id: React.Key | null | undefined; }) => (
                     <Col key={val.id} span={8}>
                         <ViewingPetCard mutations={mutations} petData={val}/>
                     </Col>

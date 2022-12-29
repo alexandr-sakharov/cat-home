@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import {Layout, Popover} from 'antd'
 import MainMenu from './MainMenu'
 import {Link, Outlet} from 'react-router-dom'
@@ -10,25 +10,27 @@ import Profile from '../../assets/profile.svg';
 const {Header, Content} = Layout
 
 const PageTemplate: React.FC = () => {
-    // State
-    const [userData, setUserData] = useState<string>()
-
-    // Effects
-    useEffect(() => {
-        setUserData('user')
-    }, [])
-
-    const performLogout = (): void => {
-        console.log('logout')
-    }
-
+    const [isAuth, setIsAuth] = useState<boolean>(!!localStorage.getItem('auth-token'))
+    debugger
     const content = (
         <div>
-            <div>
-                <Link to={'/login'}>
-                    Войти
-                </Link>
-            </div>
+            {!localStorage.getItem('auth-token') ? (
+                    <div>
+                        <Link to={'/login'}>
+                            Войти
+                        </Link>
+                    </div>
+                )
+                : (
+                    <div onClick={() => {
+                        setIsAuth(false)
+                        localStorage.removeItem('auth-token')
+                    }}>
+                        <Link to={'/'}>
+                            выйти
+                        </Link>
+                    </div>
+                )}
             <div>
                 <Link to={'/register'}>
                     Зарегистрироваться
