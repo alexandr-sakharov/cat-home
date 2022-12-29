@@ -29,7 +29,7 @@ const MainMenu: React.FC = () => {
           defaultSelectedKeys={['/']}
           defaultOpenKeys={['/']}
           items = {menuItems}
-          style={{ minWidth: '300px', background: 'transparent'}}
+          style={{ minWidth: '400px', background: 'transparent'}}
     >
     </Menu>
   )
