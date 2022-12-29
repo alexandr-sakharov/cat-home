@@ -1,7 +1,6 @@
 import ViewingCatsPage from "../pages/viewingPets/ViewingCatsPage";
-import DonationsPage from "@/components/pages/donation/DonationsPage";
-import viewingPet from "@/components/pages/viewingPet/ViewingPet";
 import ViewingPet from "@/components/pages/viewingPet/ViewingPet";
+import FavoritesPage from "@/components/pages/favorites/FavoritesPage";
 
 const routes = [
   {
@@ -14,7 +13,7 @@ const routes = [
   },
   {
     path: '/donation',
-    component: DonationsPage
+    component: FavoritesPage
   },
 ]
 

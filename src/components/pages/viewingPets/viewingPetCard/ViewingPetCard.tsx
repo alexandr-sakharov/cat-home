@@ -3,7 +3,7 @@ import {Button, Card, Form, Input, Modal} from "antd";
 // @ts-ignore
 import Profile from "@/assets/profile.svg"
 import {Link} from "react-router-dom";
-import {DeleteFilled, DeleteOutlined, EditOutlined, LikeFilled} from "@ant-design/icons";
+import {DeleteFilled, DeleteOutlined, EditOutlined, HeartFilled, LikeFilled} from "@ant-design/icons";
 import LoginRequestBody from "@/types/LoginRequestBody";
 
 // @ts-ignore
@@ -85,7 +85,7 @@ const ViewingPetCard = ({petData, mutations, roleList}) => {
                 </div>
             </>)}
             <div>
-                <LikeFilled onClick={() => defaultData.isLiked
+                <HeartFilled onClick={() => defaultData.isLiked
                     ? mutations.deleteLikePet.mutate(defaultData.id)
                     : mutations.likePet.mutate(defaultData.id)
                 }/>

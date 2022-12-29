@@ -16,6 +16,12 @@ const MainMenu: React.FC = () => {
         <Link to="/donation">Пожертвования</Link>
       ),
     },
+    {
+      key: '/favorites',
+      label: (
+        <Link to="/favorites">Избранное</Link>
+      ),
+    },
   ]
   return (
     <Menu
