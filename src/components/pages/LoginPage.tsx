@@ -7,11 +7,9 @@ import authRepository from "../../repository/AuthRepository";
 const LoginPage: React.FC = () => {
   const navigate = useNavigate()
   const onFinish = (values: LoginRequestBody): void => {
-    console.log(values)
-    localStorage.setItem('auth-token', 'test')
-    navigate('/')
     authRepository.login(values)
       .then((userData) => {
+        console.log((userData))
         if (userData !== undefined) {
           localStorage.setItem('auth-token', userData['auth-token'])
           navigate('/')
