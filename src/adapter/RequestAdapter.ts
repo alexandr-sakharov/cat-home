@@ -81,11 +81,17 @@ async function post<RequestBodyType, ResponseType>(relativeUrl: string, body: Re
 }
 
 async function put<RequestBodyType, ResponseType>(relativeUrl: string, body: RequestBodyType): Promise<ResponseType | undefined> {
+    const isAuth = {
+        'auth-token': localStorage.getItem('auth-token') && `Bearer ${localStorage.getItem('auth-token')}`
+    }
     try {
         const {data} = await axios.put<JsonResponse<ResponseType>>(
             constructUrl(relativeUrl),
             body,
-            {withCredentials: true}
+            {
+                withCredentials: true,
+                headers: isAuth,
+            }
         )
         return extractDataFromResponse(data)
     } catch (error) {
@@ -95,10 +101,16 @@ async function put<RequestBodyType, ResponseType>(relativeUrl: string, body: Req
 }
 
 async function del<ResponseType>(relativeUrl: string): Promise<ResponseType | undefined> {
+    const isAuth = {
+        'auth-token': localStorage.getItem('auth-token') && `Bearer ${localStorage.getItem('auth-token')}`
+    }
     try {
         const {data} = await axios.delete<JsonResponse<ResponseType>>(
             constructUrl(relativeUrl),
-            {withCredentials: true}
+            {
+                withCredentials: true,
+                headers: isAuth,
+            }
         )
         return extractDataFromResponse(data)
     } catch (error) {

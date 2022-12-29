@@ -67,7 +67,6 @@ const PageTemplate: React.FC = () => {
                 className="site-layout-background"
                 style={{
                     padding: 24,
-                    margin: '0 auto',
                     minHeight: '100vh'
                 }}
             >

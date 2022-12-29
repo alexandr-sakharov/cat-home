@@ -13,10 +13,7 @@ class BookingRepository extends BaseRepository {
     return await this.get<any>(Routes.list)
   }
   public setBooking= async (id: string): Promise<any> => {
-    const isAuth = {
-      'auth-token': localStorage.getItem('auth-token')
-    }
-    return await this.post<any, any>(Routes.list, { catId: id, ...isAuth })
+    return await this.post<any, any>(Routes.list, { catId: id })
   }
   public getBookingUser = async (id: string): Promise<any> => {
     return await this.get<any>(Routes.id.replace('{id}', id))
