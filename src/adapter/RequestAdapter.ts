@@ -48,10 +48,16 @@ const constructUrl = (relativeUrl: string): string => String(config.serverBaseUr
  * @throws {Error}
  */
 async function get<ResponseType>(relativeUrl: string): Promise<ResponseType | undefined> {
+    const isAuth = {
+        'auth-token': localStorage.getItem('auth-token') && `Bearer ${localStorage.getItem('auth-token')}`
+    }
     try {
         const {data} = await axios.get<JsonResponse<ResponseType>>(
             constructUrl(relativeUrl),
-            {withCredentials: true}
+            {
+                withCredentials: true,
+                headers: isAuth,
+            }
         )
         return extractDataFromResponse(data)
     } catch (error) {
