@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {Button, Col, Form, Input, Modal, Row} from 'antd';
+import {Button, Col, Form, Input, Modal, Row, Upload} from 'antd';
 import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/ViewingPetCard";
 import ViewingCatsPageQueries from "@/components/pages/viewingPets/ViewingPetsQuery";
 import LoginRequestBody from "@/types/LoginRequestBody";
 import catRepository from "@/repository/CatRepository";
+import {PlusOutlined} from "@ant-design/icons";
 
 const ViewingCatsPage: React.FC = () => {
 
@@ -25,7 +26,12 @@ const ViewingCatsPage: React.FC = () => {
 
     const onFinish = (values: LoginRequestBody): void => {
         console.log(values)
-        catRepository.addPet(values)
+        const currentValues = {
+            image: 'test',
+            ...values
+        }
+        debugger
+        catRepository.addPet(currentValues)
         handleCancel()
     }
 

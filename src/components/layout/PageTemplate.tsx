@@ -11,7 +11,6 @@ const {Header, Content} = Layout
 
 const PageTemplate: React.FC = () => {
     const [isAuth, setIsAuth] = useState<boolean>(!!localStorage.getItem('auth-token'))
-    debugger
     const content = (
         <div>
             {!localStorage.getItem('auth-token') ? (
