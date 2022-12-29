@@ -14,11 +14,18 @@ const PageTemplate: React.FC = () => {
     const content = (
         <div>
             {!localStorage.getItem('auth-token') ? (
+                <div>
                     <div>
                         <Link to={'/login'}>
                             Войти
                         </Link>
                     </div>
+                    <div>
+                        <Link to={'/register'}>
+                            Зарегистрироваться
+                        </Link>
+                    </div>
+                </div>
                 )
                 : (
                     <div onClick={() => {
@@ -30,11 +37,6 @@ const PageTemplate: React.FC = () => {
                         </Link>
                     </div>
                 )}
-            <div>
-                <Link to={'/register'}>
-                    Зарегистрироваться
-                </Link>
-            </div>
         </div>
     );
 

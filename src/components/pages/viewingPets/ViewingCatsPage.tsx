@@ -31,8 +31,8 @@ const ViewingCatsPage: React.FC = () => {
         mutations.addPet.mutate(currentValues)
         handleCancel()
     }
-
-    const roleList = roleListQuery.data?.map((val: { name: any; }) => val.name) || []
+    const role = roleListQuery.data || []
+    const roleList = role.map((val: { name: any; }) => val.name) || []
 
     return (
         <>
