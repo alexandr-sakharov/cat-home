@@ -72,7 +72,7 @@ const ViewingPet = () => {
                         пожертвование
                     </Button>
                 </div>
-                <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
+                <Modal title="Пожертвование" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                     <Input value={sum} onChange={(val) => setSum(+val.target.value)}/>
                     <div style={{ marginTop: '10px'}}>
                         <Button disabled={sum <= 1} onClick={() => {
