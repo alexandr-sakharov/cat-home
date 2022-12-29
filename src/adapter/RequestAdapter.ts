@@ -62,7 +62,7 @@ async function get<ResponseType>(relativeUrl: string): Promise<ResponseType | un
 
 async function post<RequestBodyType, ResponseType>(relativeUrl: string, body: RequestBodyType): Promise<ResponseType | undefined> {
     const isAuth = {
-        'auth-token': localStorage.getItem('auth-token')
+        'auth-token': localStorage.getItem('auth-token') && `Bearer ${localStorage.getItem('auth-token')}`
     }
     try {
         const {data} = await axios.post<JsonResponse<ResponseType>>(
