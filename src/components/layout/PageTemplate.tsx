@@ -32,9 +32,12 @@ const PageTemplate: React.FC = () => {
                         setIsAuth(false)
                         localStorage.removeItem('auth-token')
                     }}>
-                        <Link to={'/'}>
+                        <a href="" onClick={() => {
+                            setIsAuth(false)
+                            localStorage.removeItem('auth-token')
+                        }}>
                             выйти
-                        </Link>
+                        </a>
                     </div>
                 )}
         </div>
