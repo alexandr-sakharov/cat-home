@@ -32,7 +32,7 @@ const ViewingCatsPage: React.FC = () => {
         handleCancel()
     }
 
-    const roleList = roleListQuery.data?.map((val: { id: any; }) => val.id) || []
+    const roleList = roleListQuery.data?.map((val: { name: any; }) => val.name) || []
 
     return (
         <>
