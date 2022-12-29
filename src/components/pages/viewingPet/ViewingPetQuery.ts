@@ -1,6 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from '@tanstack/react-query'
 import catRepository from "@/repository/CatRepository";
 import bookingRepository from "@/repository/BookingRepository";
+import donateRepository from "@/repository/DonateRepository";
 
 
 enum QueryKey {
@@ -25,6 +26,14 @@ const ViewingPetQueries = (id: string): any => {
             mutationFn: async (id: any): Promise<any> => await bookingRepository.setBooking(id),
             onSuccess: () => {
                 void queryClient.invalidateQueries([QueryKey.pet])
+                void queryClient.invalidateQueries([QueryKey.bookingPet])
+            }
+        }),
+        addDonate: useMutation({
+            mutationFn: async (donateData): Promise<any> => await donateRepository.addDonate(donateData),
+            onSuccess: () => {
+                void queryClient.invalidateQueries([QueryKey.pet])
+                void queryClient.invalidateQueries([QueryKey.bookingPet])
             }
         }),
     }
