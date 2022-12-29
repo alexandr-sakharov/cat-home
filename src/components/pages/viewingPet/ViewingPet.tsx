@@ -8,7 +8,7 @@ const ViewingPet = () => {
     const location = useLocation()
     const currentId = location.pathname.split('/').pop()
     const { petQuery } = ViewingPetQueries(currentId || '')
-    debugger
+    console.log('render')
     return (
         <div style={{ display: 'flex', margin: '0 auto'}}>
             <div style={{ position: 'relative', minWidth: '300px' }}>

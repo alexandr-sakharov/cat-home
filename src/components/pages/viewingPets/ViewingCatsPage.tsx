@@ -8,7 +8,6 @@ import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/Viewin
 const ViewingCatsPage: React.FC = () => {
 
     const {mutations, catListQuery} = ViewingCatsPageQueries()
-    debugger
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
