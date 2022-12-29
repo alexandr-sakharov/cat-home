@@ -10,14 +10,14 @@ const DonationsPage: React.FC = () => {
             size="large"
             header={<div>Рейтинг Пожертвований</div>}
             bordered
-            dataSource={donationsQuery.data}
+            dataSource={donationsQuery.data || []}
             renderItem={(item: any) => <List.Item>
                 <div style={{ display: 'flex', justifyContent: "space-between"}}>
                     <div>
-                        {item.user.name}
+                        {item?.user?.name}
                     </div>
                     <div>
-                        {item.amount}
+                        {item?.amount}
                     </div>
                 </div>
             </List.Item>}

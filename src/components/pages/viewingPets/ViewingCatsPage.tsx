@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Button, Col, Form, Input, Modal, Row, Upload} from 'antd';
 import ViewingCatsPageQueries from "@/components/pages/viewingPets/ViewingPetsQuery";
 import LoginRequestBody from "@/types/LoginRequestBody";
-import catRepository from "@/repository/CatRepository";
 import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/ViewingPetCard";
 
 const ViewingCatsPage: React.FC = () => {
@@ -35,11 +34,13 @@ const ViewingCatsPage: React.FC = () => {
 
     return (
         <>
-            <div>
-                <Button onClick={showModal}>
-                    Добавить кота
-                </Button>
-            </div>
+            {!!localStorage.getItem('auth-token') && (
+                <div>
+                    <Button onClick={showModal}>
+                        Добавить кота
+                    </Button>
+                </div>
+            )}
 
             <Modal
                 title="Добавление кота"
@@ -112,11 +113,6 @@ const ViewingCatsPage: React.FC = () => {
                         <ViewingPetCard mutations={mutations} petData={val}/>
                     </Col>
                 ))}
-                {/*{[{id: 2}].map((val: { id: React.Key | null | undefined; }) => (*/}
-                {/*    <Col key={val.id} span={8}>*/}
-                {/*        <ViewingPetCard mutations={mutations} petData={val}/>*/}
-                {/*    </Col>*/}
-                {/*))}*/}
             </Row>
         </>
     );

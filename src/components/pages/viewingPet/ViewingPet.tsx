@@ -68,7 +68,7 @@ const ViewingPet = () => {
                     </Button>
                 </div>
                 <div>
-                    <Button type="primary" onClick={showModal}>
+                    <Button onClick={showModal}>
                         пожертвование
                     </Button>
                 </div>
