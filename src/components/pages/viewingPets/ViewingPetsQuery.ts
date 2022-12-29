@@ -6,6 +6,7 @@ import roleRepository from "@/repository/RoleRepository";
 enum QueryKey {
     catList = 'catList',
     role = 'role',
+    favorite = 'favorite',
 }
 
 const ViewingCatsPageQueries = (): any => {
@@ -55,6 +56,7 @@ const ViewingCatsPageQueries = (): any => {
             mutationFn: async (id: string): Promise<any> => await likeRepository.deleteLike(id),
             onSuccess: () => {
                 void queryClient.invalidateQueries([QueryKey.catList])
+                void queryClient.invalidateQueries([QueryKey.favorite])
             }
         }),
 
