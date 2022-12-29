@@ -5,14 +5,19 @@ import bookingRepository from "@/repository/BookingRepository";
 
 enum QueryKey {
     pet = 'pet',
+    bookingPet = 'bookingPet',
 }
 
 const ViewingPetQueries = (id: string): any => {
     const queryClient = useQueryClient()
     // Запросы
+    const bookingPetQuery = useQuery({
+        queryKey: [QueryKey.bookingPet],
+        queryFn: async (): Promise<any> => await bookingRepository.getBookingCat(id),
+    })
     const petQuery = useQuery({
         queryKey: [QueryKey.pet],
-        queryFn: async (): Promise<any> => await catRepository.getPet(id),
+        queryFn: async (): Promise<any> => await bookingRepository.getBookingCat(id),
     })
 
     const mutations = {
@@ -24,7 +29,7 @@ const ViewingPetQueries = (id: string): any => {
         }),
     }
 
-    return { petQuery }
+    return { petQuery, mutations, bookingPetQuery }
 }
 
 export default ViewingPetQueries
