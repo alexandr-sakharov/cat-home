@@ -51,18 +51,18 @@ const ViewingPet = () => {
                 <p>Пол: {petQuery.data?.sex}</p>
                 <p>Вакцинации: {petQuery.data?.vaccinations}</p>
                 <p>Описание: {petQuery.data?.description}</p>
-                {bookingPetQuery.data?.[0] && (
+                {bookingPetQuery.data && (
                     <p>
                         Статус:
-                        {bookingPetQuery.data?.[0]?.status === 'DENIED' && "отклонен"}
-                        {bookingPetQuery.data?.[0]?.status === 'APPROVED' && "принят"}
-                        {bookingPetQuery.data?.[0]?.status === 'WAITING' && "ожидание"}
+                        {bookingPetQuery.data === 'DENIED' && "отклонен"}
+                        {bookingPetQuery.data === 'APPROVED' && "принят"}
+                        {bookingPetQuery.data === 'WAITING' && "ожидание"}
                     </p>
                 )}
                 <div style={{ marginBottom: '10px'}}>
                     <Button
                         onClick={() => mutations.setBookingPet.mutate(petQuery.data?.id)}
-                        disabled={bookingPetQuery.data?.[0]?.status === 'WAITING'}
+                        disabled={bookingPetQuery.data === 'WAITING'}
                     >
                         Бронировать
                     </Button>

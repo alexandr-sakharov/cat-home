@@ -5,6 +5,7 @@ enum Routes {
   list = '/',
   id = '/{id}',
   cat = '/cat/{id}',
+  status = '/status/{id}',
 }
 
 const baseUrl = 'booking'
@@ -20,7 +21,7 @@ class BookingRepository extends BaseRepository {
     return await this.get<any>(Routes.id.replace('{id}', id))
   }
   public getBookingCat = async (id: string): Promise<any> => {
-    return await this.get<any>(Routes.cat.replace('{id}', id))
+    return await this.get<any>(Routes.status.replace('{id}', id))
   }
   public deleteBooking = async (id: string): Promise<any> => {
     return await this.delete<any>(Routes.id.replace('{id}', id))
