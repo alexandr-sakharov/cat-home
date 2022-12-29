@@ -4,7 +4,7 @@ import BaseRepository from "./BaseRepository";
 enum Routes {
   list = '/',
   id = '/{id}',
-  cat = '/cat{id}',
+  cat = '/cat/{id}',
 }
 
 const baseUrl = 'booking'
