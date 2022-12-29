@@ -17,7 +17,7 @@ const ViewingPetQueries = (id: string): any => {
     })
     const petQuery = useQuery({
         queryKey: [QueryKey.pet],
-        queryFn: async (): Promise<any> => await bookingRepository.getBookingCat(id),
+        queryFn: async (): Promise<any> => await catRepository.getPet(id),
     })
 
     const mutations = {
