@@ -7,7 +7,7 @@ import {DeleteFilled, DeleteOutlined, EditOutlined, LikeFilled} from "@ant-desig
 import LoginRequestBody from "@/types/LoginRequestBody";
 
 // @ts-ignore
-const ViewingPetCard = ({petData, mutations}) => {
+const ViewingPetCard = ({petData, mutations, roleList}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
@@ -74,14 +74,16 @@ const ViewingPetCard = ({petData, mutations}) => {
             <p>Пол: {defaultData.sex === 'male' ? 'мужской' : 'женский'}</p>
             <p>Вакцинации: {defaultData.vaccinations}</p>
             <p>Описание: {defaultData.description}</p>
-            <div onClick={() => { showModal() }} style={{ cursor: 'pointer'}}>
-                <EditOutlined/>
-                <span style={{marginLeft: '10px'}}>Редактировать</span>
-            </div>
-            <div onClick={() => mutations.deletePet.mutate(defaultData.id)} style={{ cursor: 'pointer'}}>
-                <DeleteFilled/>
-                <span style={{marginLeft: '10px'}}>Удалить</span>
-            </div>
+            {roleList.includes('ROLE_ADMIN') && (<>
+                <div onClick={() => { showModal() }} style={{ cursor: 'pointer'}}>
+                    <EditOutlined/>
+                    <span style={{marginLeft: '10px'}}>Редактировать</span>
+                </div>
+                <div onClick={() => mutations.deletePet.mutate(defaultData.id)} style={{ cursor: 'pointer'}}>
+                    <DeleteFilled/>
+                    <span style={{marginLeft: '10px'}}>Удалить</span>
+                </div>
+            </>)}
             <div>
                 <LikeFilled onClick={() => defaultData.isLiked
                     ? mutations.deletePet.mutate(defaultData.id)

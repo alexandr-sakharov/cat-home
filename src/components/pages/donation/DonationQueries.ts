@@ -1,7 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import catRepository from "@/repository/CatRepository";
-import likeRepository from "@/repository/LikeRepository";
-import donateRepository from "@/repository/DonateRepository";
+import { useQuery } from '@tanstack/react-query'
+import ratingRepository from "@/repository/RatingRepository";
 
 enum QueryKey {
     donat = 'donat',
@@ -11,7 +9,7 @@ const DonationQueries = (): any => {
     // Запросы
     const donationsQuery = useQuery({
         queryKey: [QueryKey.donat],
-        queryFn: async (): Promise<any> => await donateRepository.getDonate(),
+        queryFn: async (): Promise<any> => await ratingRepository.getRatingList(),
     })
 
 

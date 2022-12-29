@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import catRepository from "@/repository/CatRepository";
 import likeRepository from "@/repository/LikeRepository";
+import roleRepository from "@/repository/RoleRepository";
 
 enum QueryKey {
     catList = 'catList',
@@ -12,6 +13,10 @@ const ViewingCatsPageQueries = (): any => {
     const catListQuery = useQuery({
         queryKey: [QueryKey.catList],
         queryFn: async (): Promise<any> => await catRepository.getPetsList(),
+    })
+    const roleListQuery = useQuery({
+        queryKey: [QueryKey.catList],
+        queryFn: async (): Promise<any> => await roleRepository.getRoleList(),
     })
 
     // мутации
@@ -47,7 +52,7 @@ const ViewingCatsPageQueries = (): any => {
 
     }
 
-    return { mutations, catListQuery }
+    return { mutations, catListQuery, roleListQuery }
 }
 
 export default ViewingCatsPageQueries

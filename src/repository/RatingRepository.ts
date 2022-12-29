@@ -19,4 +19,4 @@ class RatingRepository extends BaseRepository {
 
 const ratingRepository = new RatingRepository(baseUrl)
 
-export default RatingRepository
+export default ratingRepository

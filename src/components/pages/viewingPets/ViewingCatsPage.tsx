@@ -6,7 +6,7 @@ import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/Viewin
 
 const ViewingCatsPage: React.FC = () => {
 
-    const {mutations, catListQuery} = ViewingCatsPageQueries()
+    const {mutations, roleListQuery, catListQuery} = ViewingCatsPageQueries()
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -32,9 +32,11 @@ const ViewingCatsPage: React.FC = () => {
         handleCancel()
     }
 
+    const roleList = roleListQuery.data?.map((val: { id: any; }) => val.id)
+
     return (
         <>
-            {!!localStorage.getItem('auth-token') && (
+            {roleList.includes('ROLE_ADMIN') && (
                 <div>
                     <Button onClick={showModal}>
                         Добавить кота
@@ -110,7 +112,7 @@ const ViewingCatsPage: React.FC = () => {
             <Row gutter={[32, 32]}>
                 {catListQuery.data?.content.map((val: { id: React.Key | null | undefined; }) => (
                     <Col key={val.id} span={8}>
-                        <ViewingPetCard mutations={mutations} petData={val}/>
+                        <ViewingPetCard roleList={roleList} mutations={mutations} petData={val}/>
                     </Col>
                 ))}
             </Row>
