@@ -84,7 +84,7 @@ const ViewingPetCard = ({fav, petData, mutations, roleList}) => {
                     <span style={{marginLeft: '10px'}}>Удалить</span>
                 </div>
             </>)}
-            {fav && (
+            {!fav && (
                 <div>
                     <HeartFilled onClick={() => defaultData.isLiked
                         ? mutations.deleteLikePet.mutate(defaultData.id)
