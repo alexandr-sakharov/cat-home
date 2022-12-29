@@ -26,7 +26,7 @@ const extractDataFromResponse = <ResponseType>(data: JsonResponse<ResponseType>)
     console.log('FORBIDDEN')
   } else if (data.code === ResponseCode.UNAUTH) {
     console.log('UNAUTH')
-  } else return data.data
+  } else return data
 }
 
 /**
