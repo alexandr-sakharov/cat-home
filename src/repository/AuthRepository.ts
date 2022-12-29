@@ -6,7 +6,7 @@ enum Routes {
   register = 'register',
 }
 
-const baseUrl = '/'
+const baseUrl = ''
 
 class AuthRepository extends BaseRepository {
   public login = async (loginRequest: any): Promise<any | undefined> => {
