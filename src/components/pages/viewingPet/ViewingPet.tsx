@@ -54,18 +54,12 @@ const ViewingPet = () => {
                 {bookingPetQuery.data?.[0] && (
                     <p>
                         Статус:
-                        {bookingPetQuery.data?.[0]?.status === 'DENIED' && (
-                            <p>отклонен</p>
-                        )}
-                        {bookingPetQuery.data?.[0]?.status === 'APPROVED' && (
-                            <p>принят</p>
-                        )}
-                        {bookingPetQuery.data?.[0]?.status === 'WAITING' && (
-                            <p>ожидание</p>
-                        )}
+                        {bookingPetQuery.data?.[0]?.status === 'DENIED' && "отклонен"}
+                        {bookingPetQuery.data?.[0]?.status === 'APPROVED' && "принят"}
+                        {bookingPetQuery.data?.[0]?.status === 'WAITING' && "ожидание"}
                     </p>
                 )}
-                <div>
+                <div style={{ marginBottom: '10px'}}>
                     <Button
                         onClick={() => mutations.setBookingPet.mutate(petQuery.data?.id)}
                         disabled={bookingPetQuery.data?.[0]?.status === 'WAITING'}
@@ -80,8 +74,8 @@ const ViewingPet = () => {
                 </div>
                 <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null}>
                     <Input value={sum} onChange={(val) => setSum(+val.target.value)}/>
-                    <div>
-                        <Button onClick={() => {
+                    <div style={{ marginTop: '10px'}}>
+                        <Button disabled={sum <= 1} onClick={() => {
                             mutations.addDonate.mutate({id: petQuery.data?.id, amount: sum})
                             setSum(0)
                             handleCancel()
