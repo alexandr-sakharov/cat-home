@@ -29,8 +29,7 @@ const ViewingCatsPage: React.FC = () => {
             image: 'test',
             ...values
         }
-        debugger
-        catRepository.addPet(currentValues)
+        mutations.addPet.mutate(currentValues)
         handleCancel()
     }
 
@@ -113,6 +112,11 @@ const ViewingCatsPage: React.FC = () => {
                         <ViewingPetCard mutations={mutations} petData={val}/>
                     </Col>
                 ))}
+                {/*{[{id: 2}].map((val: { id: React.Key | null | undefined; }) => (*/}
+                {/*    <Col key={val.id} span={8}>*/}
+                {/*        <ViewingPetCard mutations={mutations} petData={val}/>*/}
+                {/*    </Col>*/}
+                {/*))}*/}
             </Row>
         </>
     );

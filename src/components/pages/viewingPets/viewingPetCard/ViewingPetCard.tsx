@@ -1,12 +1,37 @@
-import React from 'react';
-import {Card} from "antd";
+import React, {useState} from 'react';
+import {Button, Card, Form, Input, Modal} from "antd";
 // @ts-ignore
 import Profile from "@/assets/profile.svg"
 import {Link} from "react-router-dom";
-import {DeleteFilled, DeleteOutlined, LikeFilled} from "@ant-design/icons";
+import {DeleteFilled, DeleteOutlined, EditOutlined, LikeFilled} from "@ant-design/icons";
+import LoginRequestBody from "@/types/LoginRequestBody";
 
 // @ts-ignore
 const ViewingPetCard = ({petData, mutations}) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
+    const onFinish = (values: LoginRequestBody): void => {
+        console.log(values)
+        const currentValues = {
+            image: 'test',
+            ...defaultData,
+            ...values
+        }
+        mutations.updatePet.mutate(currentValues)
+        handleCancel()
+    }
     const defaultData = {
         id: 1,
         name: 'Noname',
@@ -15,6 +40,7 @@ const ViewingPetCard = ({petData, mutations}) => {
         sex: 'male',
         vaccinations: 'Все',
         description: 'Лучший',
+        likes: 0,
         ...petData
     }
     return (
@@ -47,15 +73,83 @@ const ViewingPetCard = ({petData, mutations}) => {
             <p>Пол: {defaultData.sex === 'male' ? 'мужской' : 'женский'}</p>
             <p>Вакцинации: {defaultData.vaccinations}</p>
             <p>Описание: {defaultData.description}</p>
+            <div onClick={() => { showModal() }} style={{ cursor: 'pointer'}}>
+                <EditOutlined/>
+                <span style={{marginLeft: '10px'}}>Редактировать</span>
+            </div>
             <div onClick={() => mutations.deletePet.mutate(defaultData.id)} style={{ cursor: 'pointer'}}>
                 <DeleteFilled/>
                 <span style={{marginLeft: '10px'}}>Удалить</span>
             </div>
             <div>
-                <LikeFilled/>
+                <LikeFilled onClick={() => mutations.likePet.mutate(defaultData.id)}/>
                 <span style={{marginLeft: '10px'}}>{defaultData.likes}</span>
             </div>
-
+            <Modal
+                title="Редактирование кота"
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                footer={null}
+            >
+                <Form
+                    name="loginForm"
+                    labelCol={{span: 5}}
+                    wrapperCol={{span: 16}}
+                    initialValues={{}}
+                    autoComplete="on"
+                    onFinish={onFinish}
+                    style={{width: '500px'}}
+                >
+                    <Form.Item
+                        label="Имя"
+                        name="name"
+                        rules={[{required: true, message: 'Обязательное поле'}]}
+                    >
+                        <Input size="large"/>
+                    </Form.Item>
+                    <Form.Item
+                        label="Возраст"
+                        name="age"
+                        rules={[{required: true, message: 'Обязательное поле'}]}
+                    >
+                        <Input size="large"/>
+                    </Form.Item>
+                    <Form.Item
+                        label="Цвет"
+                        name="color"
+                        rules={[{required: true, message: 'Обязательное поле'}]}
+                    >
+                        <Input size="large"/>
+                    </Form.Item>
+                    <Form.Item
+                        label="Пол"
+                        name="sex"
+                        rules={[{required: true, message: 'Обязательное поле'}]}
+                    >
+                        <Input size="large"/>
+                    </Form.Item>
+                    <Form.Item
+                        label="Вакцинации"
+                        name="vaccinations"
+                        rules={[{required: true, message: 'Обязательное поле'}]}
+                    >
+                        <Input size="large"/>
+                    </Form.Item>
+                    <Form.Item
+                        label="Описание"
+                        name="description"
+                        rules={[{required: true, message: 'Обязательное поле'}]}
+                    >
+                        <Input size="large"/>
+                    </Form.Item>
+                    <Form.Item wrapperCol={{offset: 10, span: 16}}>
+                        <Button htmlType="submit">
+                            Добавить
+                        </Button>
+                    </Form.Item>
+                </Form>
+            </Modal>
         </Card>
     );
 };
