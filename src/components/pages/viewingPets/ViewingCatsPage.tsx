@@ -7,7 +7,7 @@ import catRepository from "@/repository/CatRepository";
 
 const ViewingCatsPage: React.FC = () => {
 
-    const {mutations, catListQuery} = ViewingCatsPageQueries()
+    // const {mutations, catListQuery} = ViewingCatsPageQueries()
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -103,11 +103,11 @@ const ViewingCatsPage: React.FC = () => {
                 </Form>
             </Modal>
             <Row gutter={[32, 32]}>
-                {(catListQuery.data || [])?.map((val: { id: React.Key | null | undefined; }) => (
-                    <Col key={val.id} span={8}>
-                        <ViewingPetCard mutations={mutations} petData={val}/>
-                    </Col>
-                ))}
+                {/*{(catListQuery.data || [])?.map((val: { id: React.Key | null | undefined; }) => (*/}
+                {/*    <Col key={val.id} span={8}>*/}
+                {/*        <ViewingPetCard mutations={mutations} petData={val}/>*/}
+                {/*    </Col>*/}
+                {/*))}*/}
             </Row>
         </>
     );
