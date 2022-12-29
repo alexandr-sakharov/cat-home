@@ -25,6 +25,7 @@ const ViewingPetCard = ({petData, mutations}) => {
     const onFinish = (values: LoginRequestBody): void => {
         console.log(values)
         const currentValues = {
+            id: defaultData.id,
             image: 'test',
             ...defaultData,
             ...values
@@ -82,7 +83,10 @@ const ViewingPetCard = ({petData, mutations}) => {
                 <span style={{marginLeft: '10px'}}>Удалить</span>
             </div>
             <div>
-                <LikeFilled onClick={() => mutations.likePet.mutate(defaultData.id)}/>
+                <LikeFilled onClick={() => defaultData.isLiked
+                    ? mutations.deletePet.mutate(defaultData.id)
+                    : mutations.likePet.mutate(defaultData.id)
+                }/>
                 <span style={{marginLeft: '10px'}}>{defaultData.likes}</span>
             </div>
             <Modal

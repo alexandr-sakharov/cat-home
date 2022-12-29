@@ -3,11 +3,13 @@ import React from 'react';
 import Profile from "@/assets/profile.svg";
 import {useLocation} from "react-router-dom";
 import ViewingPetQueries from "@/components/pages/viewingPet/ViewingPetQuery";
+import {LikeFilled} from "@ant-design/icons";
+import {Button} from "antd";
 
 const ViewingPet = () => {
     const location = useLocation()
     const currentId = location.pathname.split('/').pop()
-    const { petQuery } = ViewingPetQueries(currentId || '')
+    const { mutations, petQuery } = ViewingPetQueries(currentId || '')
     console.log('render')
     return (
         <div style={{ display: 'flex', margin: '0 auto'}}>
@@ -35,6 +37,7 @@ const ViewingPet = () => {
                 <p>Пол: {petQuery.data?.sex}</p>
                 <p>Вакцинации: {petQuery.data?.vaccinations}</p>
                 <p>Описание: {petQuery.data?.description}</p>
+                <Button onClick={() => mutations.setBookingPet.mutate(petQuery.data?.id)}>Бронировать</Button>
             </div>
         </div>
     );
