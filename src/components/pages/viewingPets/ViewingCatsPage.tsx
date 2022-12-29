@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {Button, Col, Form, Input, Modal, Row, Upload} from 'antd';
-import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/ViewingPetCard";
 import ViewingCatsPageQueries from "@/components/pages/viewingPets/ViewingPetsQuery";
 import LoginRequestBody from "@/types/LoginRequestBody";
 import catRepository from "@/repository/CatRepository";
-import {PlusOutlined} from "@ant-design/icons";
+import ViewingPetCard from "@/components/pages/viewingPets/viewingPetCard/ViewingPetCard";
 
 const ViewingCatsPage: React.FC = () => {
 
-    // const {mutations, catListQuery} = ViewingCatsPageQueries()
+    const {mutations, catListQuery} = ViewingCatsPageQueries()
+    debugger
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -109,11 +109,11 @@ const ViewingCatsPage: React.FC = () => {
                 </Form>
             </Modal>
             <Row gutter={[32, 32]}>
-                {/*{(catListQuery.data || [])?.map((val: { id: React.Key | null | undefined; }) => (*/}
-                {/*    <Col key={val.id} span={8}>*/}
-                {/*        <ViewingPetCard mutations={mutations} petData={val}/>*/}
-                {/*    </Col>*/}
-                {/*))}*/}
+                {catListQuery.data?.map((val: { id: React.Key | null | undefined; }) => (
+                    <Col key={val.id} span={8}>
+                        <ViewingPetCard mutations={mutations} petData={val}/>
+                    </Col>
+                ))}
             </Row>
         </>
     );
