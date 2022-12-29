@@ -51,6 +51,13 @@ const ViewingCatsPageQueries = (): any => {
             }
         }),
 
+        deleteLikePet: useMutation({
+            mutationFn: async (id: string): Promise<any> => await likeRepository.deleteLike(id),
+            onSuccess: () => {
+                void queryClient.invalidateQueries([QueryKey.catList])
+            }
+        }),
+
     }
 
     return { mutations, catListQuery, roleListQuery }

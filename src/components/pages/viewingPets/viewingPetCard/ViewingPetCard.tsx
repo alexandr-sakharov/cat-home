@@ -86,7 +86,7 @@ const ViewingPetCard = ({petData, mutations, roleList}) => {
             </>)}
             <div>
                 <LikeFilled onClick={() => defaultData.isLiked
-                    ? mutations.deletePet.mutate(defaultData.id)
+                    ? mutations.deleteLikePet.mutate(defaultData.id)
                     : mutations.likePet.mutate(defaultData.id)
                 }/>
                 <span style={{marginLeft: '10px'}}>{defaultData.likes}</span>
