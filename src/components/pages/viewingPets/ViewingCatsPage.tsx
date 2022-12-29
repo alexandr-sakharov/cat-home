@@ -109,7 +109,7 @@ const ViewingCatsPage: React.FC = () => {
                 </Form>
             </Modal>
             <Row gutter={[32, 32]}>
-                {catListQuery.data?.map((val: { id: React.Key | null | undefined; }) => (
+                {catListQuery.data?.content.map((val: { id: React.Key | null | undefined; }) => (
                     <Col key={val.id} span={8}>
                         <ViewingPetCard mutations={mutations} petData={val}/>
                     </Col>
